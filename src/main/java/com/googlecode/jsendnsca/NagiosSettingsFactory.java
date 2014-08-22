@@ -13,10 +13,7 @@
  */
 package com.googlecode.jsendnsca;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
@@ -142,7 +139,7 @@ public class NagiosSettingsFactory {
      * @throws NagiosConfigurationException
      *             thrown on invalid configuration values
      */
-    public static NagiosSettings createSettings(Properties properties) throws NagiosConfigurationException {
+    public static NagiosSettings createSettings(Properties properties) throws NagiosConfigurationException, IOException {
         NagiosSettings settings = new NagiosSettings();
         overrideUsing(properties, settings);
         return settings;

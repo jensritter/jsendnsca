@@ -14,8 +14,7 @@
 package com.googlecode.jsendnsca;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * This sender does not block unlike the {@link NagiosPassiveCheckSender}.
@@ -67,9 +66,7 @@ public class NonBlockingNagiosPassiveCheckSender implements PassiveCheckSender {
     }
 
     /**
-     * Sets the backing executor to use if you do not want to use the default
-     * executor which is a single thread executor.
-     * <p/>
+     * Sets the backing executor to use if you do not want to use the default executor which is a single thread executor.
      * You may want to use a custom executor in environments where you want to
      * be in control of the used thread pools.
      * 
@@ -82,7 +79,6 @@ public class NonBlockingNagiosPassiveCheckSender implements PassiveCheckSender {
 
     /**
      * Shutdown the backing executor.
-     * <p/>
      * To be used when your application has been shutdown and you want to
      * cleanup all resources such as if you run in a hot deployment environment.
      */

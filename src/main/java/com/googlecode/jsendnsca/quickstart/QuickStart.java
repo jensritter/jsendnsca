@@ -15,13 +15,8 @@ package com.googlecode.jsendnsca.quickstart;
 
 import java.io.IOException;
 
-import com.googlecode.jsendnsca.Level;
-import com.googlecode.jsendnsca.MessagePayload;
-import com.googlecode.jsendnsca.NagiosException;
-import com.googlecode.jsendnsca.NagiosPassiveCheckSender;
-import com.googlecode.jsendnsca.NagiosSettings;
-import com.googlecode.jsendnsca.builders.MessagePayloadBuilder;
-import com.googlecode.jsendnsca.builders.NagiosSettingsBuilder;
+import com.googlecode.jsendnsca.*;
+import com.googlecode.jsendnsca.builders.*;
 import com.googlecode.jsendnsca.encryption.Encryption;
 
 /**
@@ -32,7 +27,7 @@ public class QuickStart {
     /**
      * Creates {@link NagiosSettings}, {@link MessagePayload} using builders and sends
      * using {@link NagiosPassiveCheckSender}
-     * @param args
+     * @param args from cli
      */
     public static void main(String[] args) {
         NagiosSettings settings = new NagiosSettingsBuilder()
