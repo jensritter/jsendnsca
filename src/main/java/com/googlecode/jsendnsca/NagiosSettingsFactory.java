@@ -169,6 +169,8 @@ public class NagiosSettingsFactory {
                 case ENCRYPTION:
                     settings.setEncryption(toEncryption(value));
                     break;
+                default:
+                    throw new NagiosConfigurationException("unknown property : " + key);
                 }
             }
         }

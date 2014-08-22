@@ -13,17 +13,12 @@
  */
 package com.googlecode.jsendnsca;
 
-import org.apache.commons.lang.Validate;
-
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-
 import static com.googlecode.jsendnsca.utils.IOUtils.closeQuietly;
+
+import java.io.*;
+import java.net.*;
+
+import org.apache.commons.lang.Validate;
 
 /**
  * This class is used to send a Passive Check to the Nagios NSCA add-on
@@ -56,6 +51,7 @@ public class NagiosPassiveCheckSender implements PassiveCheckSender {
      * com.googlecode.jsendnsca.sender.INagiosPassiveCheckSender#send(com.googlecode
      * .jsendnsca.sender.MessagePayload)
      */
+    @Override
     public void send(MessagePayload payload) throws NagiosException, IOException {
         Validate.notNull(payload, "payload cannot be null");
 

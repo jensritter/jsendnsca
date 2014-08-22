@@ -13,12 +13,13 @@
  */
 package com.googlecode.jsendnsca.builders;
 
-import com.googlecode.jsendnsca.NagiosSettings;
-import org.junit.Test;
-
 import static com.googlecode.jsendnsca.encryption.Encryption.XOR;
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import com.googlecode.jsendnsca.NagiosSettings;
 
 public class NagiosSettingsBuilderTest {
 
@@ -50,12 +51,12 @@ public class NagiosSettingsBuilderTest {
             .create();
 
         assertEquals(host, nagiosSettings.getNagiosHost());
-        assertEquals((long) port, (long) nagiosSettings.getPort());
+        assertEquals(port, nagiosSettings.getPort());
         assertEquals(password, nagiosSettings.getPassword());
-        assertEquals((long) connectionTimeout, (long) nagiosSettings.getConnectTimeout());
-        assertEquals((long) responseTimeout, (long) nagiosSettings.getTimeout());
+        assertEquals(connectionTimeout, nagiosSettings.getConnectTimeout());
+        assertEquals(responseTimeout, nagiosSettings.getTimeout());
         assertEquals(XOR.getEncryptor(), nagiosSettings.getEncryptor());
-        assertEquals(4096L, (long) nagiosSettings.getMaxMessageSizeInChars());
+        assertEquals(4096L, nagiosSettings.getMaxMessageSizeInChars());
     }
 
     @Test

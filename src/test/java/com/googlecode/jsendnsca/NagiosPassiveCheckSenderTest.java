@@ -13,31 +13,24 @@
  */
 package com.googlecode.jsendnsca;
 
-import com.googlecode.jsendnsca.builders.MessagePayloadBuilder;
-import com.googlecode.jsendnsca.builders.NagiosSettingsBuilder;
-import com.googlecode.jsendnsca.mocks.NagiosNscaStub;
-import org.apache.commons.io.IOUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import static com.googlecode.jsendnsca.Level.CRITICAL;
+import static com.googlecode.jsendnsca.encryption.Encryption.*;
+import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.List;
 
-import static com.googlecode.jsendnsca.Level.CRITICAL;
-import static com.googlecode.jsendnsca.encryption.Encryption.TRIPLE_DES;
-import static com.googlecode.jsendnsca.encryption.Encryption.XOR;
-import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import org.apache.commons.io.IOUtils;
+import org.junit.*;
+import org.junit.rules.ExpectedException;
+
+import com.googlecode.jsendnsca.builders.*;
+import com.googlecode.jsendnsca.mocks.NagiosNscaStub;
 
 public class NagiosPassiveCheckSenderTest {
 
-    @SuppressWarnings({"PublicField"})
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
 
@@ -171,9 +164,9 @@ public class NagiosPassiveCheckSenderTest {
 
         MessagePayload messagePayload = stub.getMessagePayloadList().get(0);
 
-        assertEquals(63L, (long) messagePayload.getHostname().length());
-        assertEquals(127L, (long) messagePayload.getServiceName().length());
-        assertEquals(511L, (long) messagePayload.getMessage().length());
+        assertEquals(63L, messagePayload.getHostname().length());
+        assertEquals(127L, messagePayload.getServiceName().length());
+        assertEquals(511L, messagePayload.getMessage().length());
     }
 
     @Test

@@ -61,6 +61,7 @@ public class NonBlockingNagiosPassiveCheckSender implements PassiveCheckSender {
      * com.googlecode.jsendnsca.sender.INagiosPassiveCheckSender#send(com.googlecode
      * .jsendnsca.sender.MessagePayload)
      */
+    @Override
     public void send(MessagePayload payload) throws NagiosException, IOException {
         executor.execute(new NonBlockingSender(payload));
     }
@@ -94,6 +95,7 @@ public class NonBlockingNagiosPassiveCheckSender implements PassiveCheckSender {
             this.payload = payload;
         }
 
+        @Override
         public void run() {
             try {
                 sender.send(payload);

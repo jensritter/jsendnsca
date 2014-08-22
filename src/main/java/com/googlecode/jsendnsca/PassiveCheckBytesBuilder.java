@@ -13,11 +13,10 @@
  */
 package com.googlecode.jsendnsca;
 
-import com.googlecode.jsendnsca.utils.ByteArrayUtils;
-
 import java.util.zip.CRC32;
 
-@SuppressWarnings({"NumericCastThatLosesPrecision"})
+import com.googlecode.jsendnsca.utils.ByteArrayUtils;
+
 class PassiveCheckBytesBuilder {
 
     private static final short NSCA_VERSION = (short) 3;

@@ -13,14 +13,13 @@
  */
 package com.googlecode.jsendnsca;
 
-import org.junit.After;
-import org.junit.Test;
+import static org.hamcrest.Matchers.lessThan;
+import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.util.Date;
 
-import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertThat;
+import org.junit.*;
 
 public class NonBlockingNagiosPassiveCheckSenderTest {
 
@@ -43,6 +42,7 @@ public class NonBlockingNagiosPassiveCheckSenderTest {
 
     private static class SlowNagiosPassiveCheckSender implements PassiveCheckSender {
 
+        @Override
         public void send(MessagePayload payload) throws NagiosException, IOException {
             try {
                 Thread.sleep(100L);

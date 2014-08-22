@@ -60,6 +60,7 @@ public enum Encryption {
 
     private Encryptor none() {
         return new Encryptor() {
+            @Override
             public void encrypt(byte[] passiveCheckBytes, byte[] initVector, String password) {
             }
         };

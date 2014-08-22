@@ -90,12 +90,12 @@ public class ByteArrayUtils {
             return new byte[fixedSize];
 
         final byte[] myBytes = new byte[fixedSize];
-
-        if (value.length() > fixedSize) {
-            value = value.substring(0, fixedSize);
+        String wert2 = value;
+        if (wert2.length() > fixedSize) {
+            wert2= wert2.substring(0, fixedSize);
         }
 
-        System.arraycopy(value.getBytes(), 0, myBytes, 0, value.getBytes().length);
+        System.arraycopy(wert2.getBytes(), 0, myBytes, 0, wert2.getBytes().length);
         return myBytes;
     }
 

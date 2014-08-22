@@ -13,14 +13,12 @@
  */
 package com.googlecode.jsendnsca.encryption;
 
-import static javax.crypto.Cipher.*;
+import static javax.crypto.Cipher.ENCRYPT_MODE;
 
 import java.security.GeneralSecurityException;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.*;
+import javax.crypto.spec.*;
 
 /**
  * Triple DES encryption
@@ -38,6 +36,7 @@ public class TripleDESEncryptor implements Encryptor {
      * @see com.googlecode.jsendnsca.encryption.Encryptor#encrypt(byte[],
      * byte[], java.lang.String)
      */
+    @Override
     public void encrypt(byte[] passiveCheckBytes, byte[] initVector, String password) {
         final byte[] keyBytes = toFixedSizeByteArray(password.getBytes(), 24);
         final byte[] initVectorBytes = toFixedSizeByteArray(initVector, 8);

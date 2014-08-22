@@ -13,7 +13,7 @@
  */
 package com.googlecode.jsendnsca.encryption;
 
-import static org.apache.commons.lang.StringUtils.*;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * XOR "Encryption"
@@ -30,6 +30,7 @@ public class XorEncryptor implements Encryptor {
      * @see com.googlecode.jsendnsca.encryption.Encryptor#encrypt(byte[],
      * byte[], java.lang.String)
      */
+    @Override
     public void encrypt(byte[] passiveCheckBytes, byte[] initVector, String password) {
         for (int y = 0, x = 0; y < passiveCheckBytes.length; y++, x++) {
             if (x >= INITIALISATION_VECTOR_SIZE) {

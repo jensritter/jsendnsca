@@ -13,22 +13,18 @@
  */
 package com.googlecode.jsendnsca;
 
-import com.googlecode.jsendnsca.encryption.Encryption;
-import com.googlecode.jsendnsca.encryption.Encryptor;
-import com.googlecode.jsendnsca.encryption.TripleDESEncryptor;
+import static org.junit.Assert.assertEquals;
+
 import org.apache.commons.lang.StringUtils;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertEquals;
+import com.googlecode.jsendnsca.encryption.*;
 
 public class NagiosSettingsTest {
 
     private NagiosSettings nagiosSettings;
 
-    @SuppressWarnings({"PublicField"})
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
     
@@ -63,14 +59,14 @@ public class NagiosSettingsTest {
 
     @Test
     public void shouldReturn512MaxCharsInMessageByDefault() throws Exception {
-        assertEquals(512L, (long) nagiosSettings.getMaxMessageSizeInChars());
+        assertEquals(512L, nagiosSettings.getMaxMessageSizeInChars());
     }
     
     @Test
     public void shouldReturn4096MaxCharsInMessageWhenEnabled() throws Exception {
         nagiosSettings.enableLargeMessageSupport();
 
-        assertEquals(4096L, (long) nagiosSettings.getMaxMessageSizeInChars());
+        assertEquals(4096L, nagiosSettings.getMaxMessageSizeInChars());
     }
     
     @Test
