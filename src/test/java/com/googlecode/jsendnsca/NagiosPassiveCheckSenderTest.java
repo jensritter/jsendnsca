@@ -38,12 +38,13 @@ public class NagiosPassiveCheckSenderTest {
     private static final String MESSAGE = "Test Message";
     private static final String SERVICE_NAME = "Test Service Name";
     private static final String PASSWORD = "password";
+    private static final int PORT = 35667;
 
     private NagiosNscaStub stub;
 
     @Before
     public void startMockDaemon() throws Exception {
-        stub = new NagiosNscaStub(5667, PASSWORD);
+        stub = new NagiosNscaStub(PORT, PASSWORD);
         stub.start();
     }
 
@@ -87,6 +88,7 @@ public class NagiosPassiveCheckSenderTest {
         final NagiosSettings nagiosSettings = new NagiosSettingsBuilder()
             .withNagiosHost(HOSTNAME)
             .withPassword(PASSWORD)
+            .withPort(PORT)
             .withEncryption(XOR)
             .create();
 
@@ -115,6 +117,7 @@ public class NagiosPassiveCheckSenderTest {
             .withLargeMessageSupportEnabled()
             .withNagiosHost(HOSTNAME)
             .withPassword(PASSWORD)
+            .withPort(PORT)
             .withEncryption(XOR)
             .create();
 
@@ -147,6 +150,7 @@ public class NagiosPassiveCheckSenderTest {
         final NagiosSettings nagiosSettings = new NagiosSettingsBuilder()
             .withNagiosHost(HOSTNAME)
             .withPassword(PASSWORD)
+            .withPort(PORT)
             .withEncryption(XOR)
             .create();
 
@@ -174,6 +178,7 @@ public class NagiosPassiveCheckSenderTest {
         final NagiosSettings nagiosSettings = new NagiosSettingsBuilder()
             .withNagiosHost(HOSTNAME)
             .withPassword(PASSWORD)
+            .withPort(PORT)
             .withEncryption(TRIPLE_DES)
             .create();
 
@@ -197,6 +202,7 @@ public class NagiosPassiveCheckSenderTest {
         final NagiosSettings nagiosSettings = new NagiosSettings();
         nagiosSettings.setNagiosHost(HOSTNAME);
         nagiosSettings.setPassword(PASSWORD);
+        nagiosSettings.setPort(PORT);
         stub.setSendInitialisationVector(false);
 
         final NagiosPassiveCheckSender passiveAlerter = new NagiosPassiveCheckSender(nagiosSettings);
@@ -216,6 +222,7 @@ public class NagiosPassiveCheckSenderTest {
         expectedException.expectMessage("Read timed out");
 
         final NagiosSettings nagiosSettings = new NagiosSettings();
+        nagiosSettings.setPort(PORT);
         nagiosSettings.setTimeout(1000);
         stub.setSimulateTimeoutInMs(1500);
 
